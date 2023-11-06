@@ -26,6 +26,13 @@ def index():
     books = Book.query.all()
     return render_template('index.html', books=books)
 
+@app.route('/delete/<int:id>')
+def delete_book(id):
+    book_to_delete = Book.query.get_or_404(id)
+    db.session.delete(book_to_delete)
+    db.session.commit()
+    return redirect('/')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
 
