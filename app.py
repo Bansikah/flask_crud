@@ -1,8 +1,20 @@
-from flask import Flask
-app = Flask(__name__)
+#bryan start working from here 
+from flask import Flask, render_template
 
-@app.route('/')
-def hello_world():
-	return 'Hello, World!'
-if __name__ == '__main__':
-	app.run(port=8080, debug=True)
+
+
+
+
+
+
+
+
+year = db.column(db.integer)
+#king start copying from here
+
+
+
+
+
+
+
