@@ -16,5 +16,17 @@ year = db.column(db.integer)
 
 
 
+db.session.commit()
+#caleb start here
+@app.route('/')
+
+
+
+
+
+
+0'. port=8080
+#end
+
 
 
