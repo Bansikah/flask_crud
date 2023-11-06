@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book List</title>
+    <title>Book Lists</title>
 </head>
 <body>
     <h1>Book List</h1>
@@ -17,9 +17,6 @@
             <td>{{ book.author }}</td>
             <td>{{ book.year }}</td>
         </tr>
-        <!-- Delete Link -->
-<a href="/delete/{{ book.id }}">Delete</a>
-        {% endfor %}
     </table>
 </body>
 </html>
