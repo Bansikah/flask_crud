@@ -26,7 +26,7 @@ def import_data():
 @app.route('/')
 def index():
     books = Book.query.all()
-    return render_template('indeiiix.html', books=books)
+    return render_template('index.html', books=books)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_book():
