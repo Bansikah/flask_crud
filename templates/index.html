@@ -1,43 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book Lists</title>
-    <style>
-        /* Applying styles to the table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-/* Styling the table header */
-th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-  text-align: left;
-  padding: 10px;
-}
-
-/* Style the table rows */
-td {
-  padding: 9px;
-}
-
-/* Alternate row background color */
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-} 
-/* Style the edit and delete links */
-a {
-  text-decoration: none;
-  color: blue;
-  margin-right: 5px;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-    </style>
+    <title>Book List</title>
 </head>
 <body>
     <h1>Book List</h1>
@@ -47,14 +11,16 @@ a:hover {
             <th>Author</th>
             <th>Year</th>
         </tr>
-        {% for book in books %}
-        <tr>
+{% for book in books %}
+         <tr>
             <td>{{ book.title }}</td>
             <td>{{ book.author }}</td>
             <td>{{ book.year }}</td>
-            <td><a href="/delete/{{ book.id }}">Delete</a></td>
         </tr>
+        <td><a href="/edit/{{ book.id }}"></a></td>
+        <td><a href="/delete/{{ book.id }}">Delete</a></td>
         {% endfor %}
     </table>
 </body>
 </html>
+

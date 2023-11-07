@@ -33,6 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
+
 set -gx VIRTUAL_ENV "/home/bansikah/mywork/Applications/flask_crud/GIS-Trainees-Flask-CRUD/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
