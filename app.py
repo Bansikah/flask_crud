@@ -31,6 +31,23 @@ def index():
     books = Book.query.all()
     return render_template('index.html', books=books)
 
+@app.route('/edit_book/<int:book_id>', methods=['GET', 'POST'])
+def edit_book(book_id):
+    book = Book.query.get(book_id)
+    
+    if request.method == 'POST':
+        # Update the book details based on the form data 
+        book.title = request.form['title']
+        book.author = request.form['author']
+        book.year = int(request.form['year'])
+        db.session.commit()
+        
+        return redirect('/')
+    
+    return render_template('edit_book.html', book=book)
+
+if __name__ == '__main__':
+    app.run(port=8080, debug=True)
 
 
 
