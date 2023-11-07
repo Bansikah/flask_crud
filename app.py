@@ -27,13 +27,12 @@ def index():
     return render_template('index.html', books=books)
 
 
-# @app.route('/delete/<int:id>')
-# def delete_book(id):
-#     book_to_delete = Book.query.get_or_404(id)
-#     db.session.delete(book_to_delete)
-#     db.session.commit()
-#     return render_template('index.html')
-
+@app.route('/delete/<int:id>')
+def delete_book(id):
+    book_to_delete = Book.query.get_or_404(id)
+    db.session.delete(book_to_delete)
+    db.session.commit()
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
