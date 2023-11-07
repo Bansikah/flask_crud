@@ -2,7 +2,6 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
 
-#app.debug = True
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///books.db'
 db = SQLAlchemy(app)
@@ -13,33 +12,19 @@ class Book(db.Model):
     author = db.Column(db.String(100))
     year = db.Column(db.Integer)
 
-
-# @app.before_first_request
-# def import_data_func():
-#     db.create_all()
-#     if Book.query.first() is None:  # Only import if table is empty
-#         data = pd.read_csv('data.csv')
-#         for row in data.itertuples():
-#             db.session.add(Book(title=row.title, author=row.author, year=row.year))
-#         db.session.commit()
-
-
-@app.route('/import-data')
-def import_data():
+@app.before_request
+def import_data_func():
     db.create_all()
     if Book.query.first() is None:  # Only import if table is empty
         data = pd.read_csv('data.csv')
         for row in data.itertuples():
             db.session.add(Book(title=row.title, author=row.author, year=row.year))
         db.session.commit()
-    return 'Data imported successfully!'
-
 
 @app.route('/')
 def index():
     books = Book.query.all()
     return render_template('index.html', books=books)
-
 
 
 # @app.route('/delete/<int:id>')
