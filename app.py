@@ -32,7 +32,7 @@ def delete_book(id):
     book_to_delete = Book.query.get_or_404(id)
     db.session.delete(book_to_delete)
     db.session.commit()
-    return render_template('index.html')
+    return render_template('index.html')                        
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
