@@ -16,7 +16,8 @@ class Book(db.Model):
 @app.before_first_request
 def import_data():
     db.create_all()
-    if Book.query.first() is None: # this only imports if table is empty
+    if Book.query.first() is None: 
+        # this only imports if table is empty
         data = pd.read_csv('data.csv')
         for row in data.itertuples():
             db.session.add(Book(title=row.title, author=row.author, year=row.year))
