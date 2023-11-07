@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
 
@@ -27,12 +27,12 @@ def index():
     return render_template('index.html', books=books)
 
 
-@app.route('/delete/<int:id>')
+@app.route('/delete/<int:id>')# represents a dynamic parameter indicating the ID of the book to be deleted. 
 def delete_book(id):
-    book_to_delete = Book.query.get_or_404(id)
-    db.session.delete(book_to_delete)
-    db.session.commit()
-    return render_template('index.html')                        
+    book_to_delete = Book.query.get_or_404(id)#used to retrieve the book with the specific id if not found returns 404
+    db.session.delete(book_to_delete)#removes the book record from the database
+    db.session.commit()#saves the changes made in the database delete session
+    return redirect('/')  #Redirects to the user template showing that the data has been deleted                      
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
